@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #F2F0E9;
+  color: #1A1A1A;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Typography helpers ───────────────────────────────────────────────────── */
+.font-serif-drama {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.font-data {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ── Noise overlay (SVG filter, opacity 0.05) ────────────────────────────── */
+#noise-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.05;
+  filter: url(#noise-filter);
+  background: #888;
+}
+
+/* ── Magnetic button (global) ─────────────────────────────────────────────── */
+.btn-magnetic {
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn-magnetic:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 32px rgba(204, 88, 51, 0.35);
+}
+
+/* ── Link hover lift ──────────────────────────────────────────────────────── */
+.link-lift {
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.link-lift:hover {
+  transform: translateY(-1px);
+}
+
+/* ── Protocol cards (GSAP will-change) ───────────────────────────────────── */
+.protocol-card {
+  will-change: transform, opacity, filter;
+}
+
+/* ── SVG: scanning laser ──────────────────────────────────────────────────── */
+@keyframes scan-move {
+  0%   { transform: translateY(-30px); }
+  50%  { transform: translateY(30px);  }
+  100% { transform: translateY(-30px); }
+}
+.scan-laser {
+  animation: scan-move 2s ease-in-out infinite;
+}
+
+/* ── SVG: EKG wave (stroke-dashoffset) ────────────────────────────────────── */
+@keyframes ekg-draw {
+  0%   { stroke-dashoffset: 320; }
+  50%  { stroke-dashoffset: 0;   }
+  100% { stroke-dashoffset: -320; }
+}
+.ekg-path {
+  stroke-dasharray: 320;
+  animation: ekg-draw 2.5s linear infinite;
+}
+
+/* ── Cursor blink ─────────────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Green status pulse ───────────────────────────────────────────────────── */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.4); }
+}
+.status-dot {
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+/* ── Mobile responsive tweaks ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-title-main  { font-size: clamp(2rem, 10vw, 3.5rem); }
+  .hero-title-drama { font-size: clamp(3.5rem, 18vw, 7rem); }
+}
