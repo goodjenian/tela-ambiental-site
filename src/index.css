@@ -51,7 +51,7 @@ body {
 }
 .btn-magnetic:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 32px rgba(204, 88, 51, 0.35);
+  box-shadow: 0 8px 32px rgba(46, 204, 113, 0.35);
 }
 
 /* ── Link hover lift ──────────────────────────────────────────────────────── */

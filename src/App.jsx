@@ -9,7 +9,7 @@ import {
 gsap.registerPlugin(ScrollTrigger)
 
 const WA       = 'https://api.whatsapp.com/send?phone=5511953028497'
-const HERO_IMG  = 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80'
+const HERO_IMG  = 'https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?auto=format&fit=crop&w=1920&q=80'
 const PHILOS_IMG = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=80'
 const LOGO_URL  = 'https://telaambiental.com.br/wp-content/uploads/2025/01/655e5924-1_104h036000000000000028.png'
 
@@ -87,8 +87,10 @@ function Navbar() {
 // ─────────────────────────────────────────────────────────────────────────────
 function Hero() {
   const ref = useRef(null)
+  const [imgLoaded, setImgLoaded] = useState(false)
 
   useEffect(() => {
+    setImgLoaded(true)
     const ctx = gsap.context(() => {
       gsap.from('.hero-text', {
         y: 40, opacity: 0, duration: 1.2,
@@ -103,11 +105,14 @@ function Hero() {
       <img
         src={HERO_IMG}
         alt="Floresta nativa preservada — TELA Ambiental"
-        className="absolute inset-0 w-full h-full object-cover"
+        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[8000ms] ease-out ${imgLoaded ? 'scale-100' : 'scale-105'}`}
         loading="eager"
         fetchPriority="high"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-primary/75 to-primary/30" />
+      {/* Gradiente principal: base preta para textos na parte inferior e meio sutil verde */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-primary/50 to-transparent" />
+      {/* Gradiente extra apenas no topo para garantir o contraste da navegação e textos */}
+      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/70 to-transparent" />
 
       <div className="relative h-full flex flex-col justify-end pb-14 px-8 md:px-16 max-w-5xl">
         <div className="hero-text mb-3">
@@ -118,12 +123,12 @@ function Hero() {
 
         <h1>
           <span className="hero-text block font-sans font-bold text-cream leading-tight hero-title-main"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+            style={{ fontSize: 'clamp(1.25rem, 3vw, 2.5rem)' }}>
             Licenciamento é
           </span>
           <span className="hero-text block font-serif-drama text-cream leading-none hero-title-drama"
-            style={{ fontSize: 'clamp(4.5rem, 14vw, 11rem)', fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic' }}>
-            Segurança.
+            style={{ fontSize: 'clamp(2.25rem, 7vw, 5.5rem)', fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic' }}>
+            Conformidade Legal.
           </span>
         </h1>
 
@@ -154,7 +159,7 @@ function Hero() {
 function FeatureShuffler() {
   const [stack, setStack] = useState([
     { label: 'Licença Ambiental',   tag: 'CETESB · IBAMA · IEF', dot: '#2E4036' },
-    { label: 'Licença Urbanística', tag: 'CUOS · Habite-se · AVCB', dot: '#CC5833' },
+    { label: 'Licença Urbanística', tag: 'CUOS · Habite-se · AVCB', dot: '#2ECC71' },
     { label: 'Licença Aeronáutica', tag: 'COMAR · Heliponto',       dot: '#4A6741' },
   ])
 
@@ -319,8 +324,8 @@ function FeatureScheduler() {
                 <div
                   className="w-full aspect-square rounded-lg flex items-center justify-center transition-all duration-300"
                   style={{
-                    backgroundColor: isActive ? '#CC5833' : 'rgba(46,64,54,0.1)',
-                    border: isActive ? '1px solid #CC5833' : '1px solid transparent',
+                    backgroundColor: isActive ? '#2ECC71' : 'rgba(46,64,54,0.1)',
+                    border: isActive ? '1px solid #2ECC71' : '1px solid transparent',
                     transform: isActive ? 'scale(0.95)' : 'scale(1)',
                   }}
                 >
@@ -334,7 +339,7 @@ function FeatureScheduler() {
           disabled
           className="w-full py-2.5 rounded-xl font-sans text-sm font-semibold transition-all duration-500"
           style={{
-            backgroundColor: saved ? '#CC5833' : 'rgba(46,64,54,0.1)',
+            backgroundColor: saved ? '#2ECC71' : 'rgba(46,64,54,0.1)',
             color: saved ? '#F2F0E9' : 'rgba(26,26,26,0.3)',
           }}
         >
@@ -423,7 +428,7 @@ function Philosophy() {
           {' '}
           <em
             className="font-serif-drama not-italic"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', color: '#CC5833', fontSize: '1.2em' }}
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', color: '#2ECC71', fontSize: '1.2em' }}
           >
             <span className="phil-word inline-block">agilidade</span>
             {' '}
@@ -446,7 +451,7 @@ function ConcentricCircles() {
       {[44, 33, 22, 11].map((r, i) => (
         <circle key={r} cx="60" cy="60" r={r}
           fill="none"
-          stroke={i % 2 === 0 ? '#CC5833' : '#F2F0E9'}
+          stroke={i % 2 === 0 ? '#2ECC71' : '#F2F0E9'}
           strokeWidth="1.5"
           opacity={1 - i * 0.15}
         >
@@ -475,7 +480,7 @@ function ScanningGrid() {
           />
         ))
       )}
-      <line x1="0" y1="50" x2="140" y2="50" stroke="#CC5833" strokeWidth="2" opacity="0.9"
+      <line x1="0" y1="50" x2="140" y2="50" stroke="#2ECC71" strokeWidth="2" opacity="0.9"
         className="scan-laser"
       />
     </svg>
@@ -487,7 +492,7 @@ function EKGWave() {
     <svg width="180" height="70" viewBox="0 0 180 70" aria-hidden="true">
       <path
         d="M0,35 L25,35 L30,18 L35,52 L40,8 L45,62 L50,35 L80,35 L85,18 L90,52 L95,8 L100,62 L105,35 L140,35 L145,18 L150,52 L155,8 L160,62 L165,35 L180,35"
-        fill="none" stroke="#CC5833" strokeWidth="2.5"
+        fill="none" stroke="#2ECC71" strokeWidth="2.5"
         strokeLinecap="round" strokeLinejoin="round"
         className="ekg-path"
       />
@@ -608,7 +613,7 @@ const WHY_ITEMS = [
 
 function WhySection() {
   return (
-    <section id="por-que" className="py-24 px-8 md:px-16" style={{ backgroundColor: '#EAE8E1' }} aria-labelledby="why-title">
+    <section id="por-que" className="py-24 px-8 md:px-16" style={{ background: 'linear-gradient(to bottom, #EAE8E1, #dff0e5)' }} aria-labelledby="why-title">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <span className="font-mono text-xs text-accent tracking-widest uppercase">Importância</span>
@@ -677,6 +682,57 @@ function Services() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// CLIENTS
+// ─────────────────────────────────────────────────────────────────────────────
+function ClientsSection() {
+  const clients = [
+    { name: 'Nexo SP', img: '/nexo.png' },
+    { name: 'Procisa', img: '/procisa.png' },
+    { name: 'Grupo TCZ', img: '/tcz.png' },
+    { name: 'Claro', img: '/claro.png' },
+  ]
+
+  return (
+    <section className="py-24 px-8 md:px-16" style={{ backgroundColor: '#EAE8E1' }} aria-labelledby="clients-title">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-14">
+          <span className="font-mono text-xs text-accent tracking-widest uppercase">Portfólio</span>
+          <h2 id="clients-title" className="font-sans font-bold text-dark text-3xl md:text-4xl mt-2">
+            Empresas que Confiam na TELA Ambiental
+          </h2>
+        </div>
+        
+        <div className="flex flex-wrap justify-center gap-5">
+          {clients.map((client, i) => (
+            <div
+              key={i}
+              className="w-[calc(50%-10px)] md:w-48 lg:w-56 border border-primary/10 rounded-2xl p-5 flex items-center justify-center grayscale transition-all duration-300 hover:grayscale-0 bg-cream/30"
+              style={{ minHeight: '120px' }}
+            >
+              {client.img && (
+                <img
+                  src={client.img}
+                  alt={client.name}
+                  className="max-w-full max-h-full object-contain"
+                  style={{ maxHeight: '60px' }}
+                  onError={e => {
+                    e.currentTarget.style.display = 'none'
+                    if (e.currentTarget.nextSibling) e.currentTarget.nextSibling.style.display = 'block'
+                  }}
+                />
+              )}
+              <span className="font-mono text-xs text-dark/30 text-center" style={{ display: client.img ? 'none' : 'block' }}>
+                {client.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // STATS
 // ─────────────────────────────────────────────────────────────────────────────
 const STATS = [
@@ -688,7 +744,7 @@ const STATS = [
 
 function Stats() {
   return (
-    <section className="py-24 px-8 md:px-16" style={{ backgroundColor: '#2E4036' }} aria-labelledby="stats-title">
+    <section className="py-24 px-8 md:px-16" style={{ background: 'linear-gradient(135deg, #2E4036, #1a5c2e)' }} aria-labelledby="stats-title">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <span className="font-mono text-xs text-accent tracking-widest uppercase">Resultados comprovados</span>
@@ -705,6 +761,47 @@ function Stats() {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AGENCIES
+// ─────────────────────────────────────────────────────────────────────────────
+const AGENCIES = [
+  'IBAMA', 'CETESB', 'INEA', 'SEMA-MT', 'SEMAS-PA', 'SEMAD-GO',
+  'IEF-MG', 'FEPAM-RS', 'OEMA-AM', 'ANATEL', 'COMAR', 'FUNAI'
+]
+
+function AgenciesSection() {
+  return (
+    <section className="py-24 px-8 md:px-16 bg-cream" aria-labelledby="agencies-title">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-14">
+          <span className="font-mono text-xs text-accent tracking-widest uppercase">Alcance</span>
+          <h2 id="agencies-title" className="font-sans font-bold text-dark text-3xl md:text-4xl mt-2">
+            Atuamos em Todo o Brasil
+          </h2>
+          <p className="text-dark/60 text-base md:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
+            Experiência consolidada com os principais órgãos ambientais federais e estaduais — de norte a sul do país.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {AGENCIES.map(agency => (
+            <div
+              key={agency}
+              className="border border-primary/15 rounded-2xl p-4 flex items-center justify-center grayscale opacity-60 hover:opacity-100 hover:border-accent/40 transition-all duration-300"
+            >
+              <span className="font-mono font-bold text-lg text-dark">{agency}</span>
+            </div>
+          ))}
+        </div>
+        
+        <p className="text-dark/50 text-sm text-center mt-8">
+          E muito mais — atendemos qualquer estado do Brasil.
+        </p>
       </div>
     </section>
   )
@@ -766,7 +863,7 @@ function Founders() {
     <section
       id="fundadores"
       className="py-20 px-8 md:px-16"
-      style={{ backgroundColor: '#EAE8E1' }}
+      style={{ background: 'linear-gradient(to bottom, #EAE8E1, #dff0e5)' }}
       aria-labelledby="founders-title"
     >
       <div className="max-w-3xl mx-auto">
@@ -979,7 +1076,9 @@ export default function App() {
         <Protocol />
         <WhySection />
         <Services />
+        <ClientsSection />
         <Stats />
+        <AgenciesSection />
         <About />
         <Founders />
         <CTASection />
