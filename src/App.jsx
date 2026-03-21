@@ -690,7 +690,32 @@ function ClientsSection() {
     { name: 'Procisa', img: '/procisa.png' },
     { name: 'Grupo TCZ', img: '/tcz.png' },
     { name: 'Claro', img: '/claro.png' },
+    { name: 'Vtal', img: '/vtal.png' }
   ]
+
+  const renderClient = (client) => (
+    <div
+      key={client.name}
+      className="w-[calc(50%-10px)] md:w-48 lg:w-56 border border-primary/10 rounded-2xl p-5 flex items-center justify-center grayscale transition-all duration-300 hover:grayscale-0 bg-cream/30"
+      style={{ minHeight: '120px' }}
+    >
+      {client.img && (
+        <img
+          src={client.img}
+          alt={client.name}
+          className="max-w-full max-h-full object-contain"
+          style={{ maxHeight: '60px' }}
+          onError={e => {
+            e.currentTarget.style.display = 'none'
+            if (e.currentTarget.nextSibling) e.currentTarget.nextSibling.style.display = 'block'
+          }}
+        />
+      )}
+      <span className="font-mono text-xs text-dark/30 text-center" style={{ display: client.img ? 'none' : 'block' }}>
+        {client.name}
+      </span>
+    </div>
+  )
 
   return (
     <section className="py-24 px-8 md:px-16" style={{ backgroundColor: '#EAE8E1' }} aria-labelledby="clients-title">
@@ -702,30 +727,13 @@ function ClientsSection() {
           </h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-5">
-          {clients.map((client, i) => (
-            <div
-              key={i}
-              className="w-[calc(50%-10px)] md:w-48 lg:w-56 border border-primary/10 rounded-2xl p-5 flex items-center justify-center grayscale transition-all duration-300 hover:grayscale-0 bg-cream/30"
-              style={{ minHeight: '120px' }}
-            >
-              {client.img && (
-                <img
-                  src={client.img}
-                  alt={client.name}
-                  className="max-w-full max-h-full object-contain"
-                  style={{ maxHeight: '60px' }}
-                  onError={e => {
-                    e.currentTarget.style.display = 'none'
-                    if (e.currentTarget.nextSibling) e.currentTarget.nextSibling.style.display = 'block'
-                  }}
-                />
-              )}
-              <span className="font-mono text-xs text-dark/30 text-center" style={{ display: client.img ? 'none' : 'block' }}>
-                {client.name}
-              </span>
-            </div>
-          ))}
+        <div className="flex flex-col gap-5 items-center">
+          <div className="flex flex-wrap justify-center gap-5 w-full">
+            {clients.slice(0, 2).map(renderClient)}
+          </div>
+          <div className="flex flex-wrap justify-center gap-5 w-full">
+            {clients.slice(2).map(renderClient)}
+          </div>
         </div>
       </div>
     </section>
