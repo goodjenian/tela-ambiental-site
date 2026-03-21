@@ -8,10 +8,10 @@ import {
 
 gsap.registerPlugin(ScrollTrigger)
 
-const WA       = 'https://api.whatsapp.com/send?phone=5511953028497'
-const HERO_IMG  = 'https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?auto=format&fit=crop&w=1920&q=80'
+const WA = 'https://api.whatsapp.com/send?phone=5511953028497'
+const HERO_IMG = 'https://images.unsplash.com/photo-1591081658714-f576fb7ea3ed?auto=format&fit=crop&w=1920&q=80'
 const PHILOS_IMG = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=80'
-const LOGO_URL  = 'https://telaambiental.com.br/wp-content/uploads/2025/01/655e5924-1_104h036000000000000028.png'
+const LOGO_URL = 'https://telaambiental.com.br/wp-content/uploads/2025/01/655e5924-1_104h036000000000000028.png'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // NOISE SVG (global, fixed)
@@ -69,8 +69,8 @@ function Navbar() {
       </a>
       <div className="hidden md:flex items-center gap-5">
         <a href="#nossos-servicos" className={linkCls}>Serviços</a>
-        <a href="#por-que"         className={linkCls}>Por Que</a>
-        <a href="#quem-somos"      className={linkCls}>Quem Somos</a>
+        <a href="#por-que" className={linkCls}>Por Que</a>
+        <a href="#quem-somos" className={linkCls}>Quem Somos</a>
       </div>
       <a
         href={WA} target="_blank" rel="noopener noreferrer"
@@ -158,9 +158,9 @@ function Hero() {
 // ─────────────────────────────────────────────────────────────────────────────
 function FeatureShuffler() {
   const [stack, setStack] = useState([
-    { label: 'Licença Ambiental',   tag: 'CETESB · IBAMA · IEF', dot: '#2E4036' },
+    { label: 'Licença Ambiental', tag: 'CETESB · IBAMA · IEF', dot: '#2E4036' },
     { label: 'Licença Urbanística', tag: 'CUOS · Habite-se · AVCB', dot: '#2ECC71' },
-    { label: 'Licença Aeronáutica', tag: 'COMAR · Heliponto',       dot: '#4A6741' },
+    { label: 'Licença Aeronáutica', tag: 'COMAR · Heliponto', dot: '#4A6741' },
   ])
 
   useEffect(() => {
@@ -276,11 +276,11 @@ function FeatureTypewriter() {
 // FEATURE CARD 3 — Cursor Protocol Scheduler
 // ─────────────────────────────────────────────────────────────────────────────
 const DAYS_LABELS = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
-const WORK_DAYS   = [1, 2, 3, 4, 5] // Mon–Fri
+const WORK_DAYS = [1, 2, 3, 4, 5] // Mon–Fri
 
 function FeatureScheduler() {
-  const [active, setActive]   = useState([])
-  const [saved,  setSaved]    = useState(false)
+  const [active, setActive] = useState([])
+  const [saved, setSaved] = useState(false)
   const timerRef = useRef(null)
 
   useEffect(() => {
@@ -383,7 +383,7 @@ function Features() {
 // PHILOSOPHY — manifesto section
 // ─────────────────────────────────────────────────────────────────────────────
 function Philosophy() {
-  const secRef  = useRef(null)
+  const secRef = useRef(null)
   const textRef = useRef(null)
 
   useEffect(() => {
@@ -603,12 +603,12 @@ function Protocol() {
 // WHY SECTION — por que licenciar
 // ─────────────────────────────────────────────────────────────────────────────
 const WHY_ITEMS = [
-  { n: '01', title: 'Conformidade Legal',          desc: 'Empresas sem licenças podem sofrer multas, embargo de atividades e suspensão de operações.' },
-  { n: '02', title: 'Reputação e Credibilidade',   desc: 'Cumprir exigências ambientais fortalece a imagem da marca perante clientes, investidores e o mercado.' },
-  { n: '03', title: 'Segurança em Investimentos',  desc: 'Bancos e investidores exigem critérios ambientais antes de aprovar empréstimos e financiamentos.' },
-  { n: '04', title: 'Mitigação de Riscos',         desc: 'Com o licenciamento, empresas identificam e controlam impactos negativos ao meio ambiente.' },
-  { n: '05', title: 'Acesso a Novos Mercados',     desc: 'Certificações ambientais são necessárias para atuar em mercados nacionais e internacionais exigentes.' },
-  { n: '06', title: 'Vantagem Competitiva',        desc: 'Empresas responsáveis atendem à crescente demanda por produtos e serviços sustentáveis.' },
+  { n: '01', title: 'Conformidade Legal', desc: 'Empresas sem licenças podem sofrer multas, embargo de atividades e suspensão de operações.' },
+  { n: '02', title: 'Reputação e Credibilidade', desc: 'Cumprir exigências ambientais fortalece a imagem da marca perante clientes, investidores e o mercado.' },
+  { n: '03', title: 'Segurança em Investimentos', desc: 'Bancos e investidores exigem critérios ambientais antes de aprovar empréstimos e financiamentos.' },
+  { n: '04', title: 'Mitigação de Riscos', desc: 'Com o licenciamento, empresas identificam e controlam impactos negativos ao meio ambiente.' },
+  { n: '05', title: 'Acesso a Novos Mercados', desc: 'Certificações ambientais são necessárias para atuar em mercados nacionais e internacionais exigentes.' },
+  { n: '06', title: 'Vantagem Competitiva', desc: 'Empresas responsáveis atendem à crescente demanda por produtos e serviços sustentáveis.' },
 ]
 
 function WhySection() {
@@ -642,13 +642,13 @@ function WhySection() {
 // SERVICES
 // ─────────────────────────────────────────────────────────────────────────────
 const SERVICES = [
-  { Icon: Leaf,         title: 'Licenciamento Ambiental e Urbanístico', desc: 'Todas as etapas para que seu projeto tenha as licenças ambientais necessárias, do início à operação.' },
-  { Icon: TreePine,     title: 'Serviços Florestais',                   desc: 'Reflorestamento, recomposição vegetal e recuperação de áreas degradadas conforme exigências dos órgãos.' },
-  { Icon: Building2,    title: 'Regularização Imobiliária',             desc: 'Regularização de imóveis urbanos e rurais, desmembramento de lotes, registros e averbações necessárias.' },
-  { Icon: CheckCircle2, title: 'Licenciamento Urbanístico',             desc: 'CUOS, Alvará de Construção, Habite-se e AVCB, garantindo conformidade com todas as normas.' },
-  { Icon: Globe,        title: 'Licenciamento Aeronáutico (COMAR)',     desc: 'Aprovação de helipontos e processos de sombreamento, cumprindo as exigências do Comando Aéreo.' },
-  { Icon: Map,          title: 'Cartografia e Geoprocessamento',        desc: 'Mapas detalhados e dados geoespaciais precisos para suporte completo ao seu projeto.' },
-  { Icon: MapPin,       title: 'Levantamento Topográfico',              desc: 'Análises precisas do relevo e condições físicas do terreno com equipamentos avançados de última geração.' },
+  { Icon: Leaf, title: 'Licenciamento Ambiental e Urbanístico', desc: 'Todas as etapas para que seu projeto tenha as licenças ambientais necessárias, do início à operação.' },
+  { Icon: TreePine, title: 'Serviços Florestais', desc: 'Reflorestamento, recomposição vegetal e recuperação de áreas degradadas conforme exigências dos órgãos.' },
+  { Icon: Building2, title: 'Regularização Imobiliária', desc: 'Regularização de imóveis urbanos e rurais, desmembramento de lotes, registros e averbações necessárias.' },
+  { Icon: CheckCircle2, title: 'Licenciamento Urbanístico', desc: 'CUOS, Alvará de Construção, Habite-se e AVCB, garantindo conformidade com todas as normas.' },
+  { Icon: Globe, title: 'Licenciamento Aeronáutico (COMAR)', desc: 'Aprovação de helipontos e processos de sombreamento, cumprindo as exigências do Comando Aéreo.' },
+  { Icon: Map, title: 'Cartografia e Geoprocessamento', desc: 'Mapas detalhados e dados geoespaciais precisos para suporte completo ao seu projeto.' },
+  { Icon: MapPin, title: 'Levantamento Topográfico', desc: 'Análises precisas do relevo e condições físicas do terreno com equipamentos avançados de última geração.' },
 ]
 
 function Services() {
@@ -701,7 +701,7 @@ function ClientsSection() {
             Empresas que Confiam na TELA Ambiental
           </h2>
         </div>
-        
+
         <div className="flex flex-wrap justify-center gap-5">
           {clients.map((client, i) => (
             <div
@@ -736,10 +736,10 @@ function ClientsSection() {
 // STATS
 // ─────────────────────────────────────────────────────────────────────────────
 const STATS = [
-  { value: '+5.000',   label: 'Licenças Emitidas',      sub: 'em todo o Brasil' },
-  { value: '+2.000',   label: 'Relatórios Elaborados',  sub: 'EIAs, RIMAs e estudos' },
-  { value: '+4.000',   label: 'ERBs Licenciadas',       sub: 'torres de telecomunicações' },
-  { value: '+7.000km', label: 'Fibra Óptica',           sub: 'infraestrutura licenciada' },
+  { value: '+5.000', label: 'Licenças Emitidas', sub: 'em todo o Brasil' },
+  { value: '+2.000', label: 'Relatórios Elaborados', sub: 'EIAs, RIMAs e estudos' },
+  { value: '+4.000', label: 'ERBs Licenciadas', sub: 'torres de telecomunicações' },
+  { value: '+7.000km', label: 'Fibra Óptica', sub: 'infraestrutura licenciada' },
 ]
 
 function Stats() {
@@ -769,11 +769,6 @@ function Stats() {
 // ─────────────────────────────────────────────────────────────────────────────
 // AGENCIES
 // ─────────────────────────────────────────────────────────────────────────────
-const AGENCIES = [
-  'IBAMA', 'CETESB', 'INEA', 'SEMA-MT', 'SEMAS-PA', 'SEMAD-GO',
-  'IEF-MG', 'FEPAM-RS', 'OEMA-AM', 'ANATEL', 'COMAR', 'FUNAI'
-]
-
 function AgenciesSection() {
   return (
     <section className="py-24 px-8 md:px-16 bg-cream" aria-labelledby="agencies-title">
@@ -787,21 +782,24 @@ function AgenciesSection() {
             Experiência consolidada com os principais órgãos ambientais federais e estaduais — de norte a sul do país.
           </p>
         </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {AGENCIES.map(agency => (
-            <div
-              key={agency}
-              className="border border-primary/15 rounded-2xl p-4 flex items-center justify-center grayscale opacity-60 hover:opacity-100 hover:border-accent/40 transition-all duration-300"
-            >
-              <span className="font-mono font-bold text-lg text-dark">{agency}</span>
-            </div>
-          ))}
+
+        <div className="w-full flex justify-center items-center">
+          <img
+            src="/orgaos.png"
+            alt="Órgãos ambientais"
+            className="w-full max-w-4xl object-contain opacity-80 hover:opacity-100 transition-all duration-500"
+            onError={e => {
+              e.currentTarget.style.display = 'none'
+              if (e.currentTarget.nextSibling) e.currentTarget.nextSibling.style.display = 'block'
+            }}
+          />
+          <div className="text-center p-12 border-2 border-dashed border-primary/20 rounded-2xl w-full max-w-4xl bg-cream/50" style={{ display: 'none' }}>
+            <span className="block font-mono text-sm text-dark/40 mb-2">Imagem não encontrada</span>
+            <span className="block font-sans text-lg font-semibold text-dark/70">
+              Faça o upload do arquivo <strong className="text-accent">orgaos.png</strong> na pasta public
+            </span>
+          </div>
         </div>
-        
-        <p className="text-dark/50 text-sm text-center mt-8">
-          E muito mais — atendemos qualquer estado do Brasil.
-        </p>
       </div>
     </section>
   )
